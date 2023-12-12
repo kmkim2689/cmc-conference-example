@@ -1,4 +1,4 @@
-package com.practice.conference_example.domain
+package com.practice.conference_example.domain.repository
 
 import com.practice.conference_example.data.ArrivalInfo
 

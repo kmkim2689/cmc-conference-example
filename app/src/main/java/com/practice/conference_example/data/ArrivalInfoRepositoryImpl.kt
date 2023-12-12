@@ -1,6 +1,6 @@
 package com.practice.conference_example.data
 
-import com.practice.conference_example.domain.ArrivalInfoRepository
+import com.practice.conference_example.domain.repository.ArrivalInfoRepository
 import kotlin.random.Random
 
 class ArrivalInfoRepositoryImpl : ArrivalInfoRepository {
