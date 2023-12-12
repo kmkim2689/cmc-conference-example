@@ -12,7 +12,6 @@ class GetMessageUseCase(
     fun execute() = flow<String> {
         fun execute(sortBy: String) = flow<Resource<String>> {
             try {
-                emit(Resource.Loading())
                 repository.getArrivalMessage()?.let {
                     emit(Resource.Success(it))
                 } ?: emit(Resource.Error("No Information"))
