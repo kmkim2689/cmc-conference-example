@@ -9,18 +9,17 @@ import kotlinx.coroutines.flow.flow
 class GetMessageUseCase(
     private val repository: ArrivalInfoRepository
 ) {
-    fun execute() = flow<String> {
-        fun execute(sortBy: String) = flow<Resource<String>> {
-            try {
-                repository.getArrivalMessage()?.let {
-                    emit(Resource.Success(it))
-                } ?: emit(Resource.Error("No Information"))
-            } catch (e: Exception) {
-                if (e is CancellationException) {
-                    throw e
-                }
-                emit(Resource.Error(e.localizedMessage ?: "unexpected error"))
+    fun execute() = flow<Resource<String>> {
+        try {
+            repository.getArrivalMessage()?.let {
+                emit(Resource.Success(it))
+            } ?: emit(Resource.Error("No Information"))
+        } catch (e: Exception) {
+            if (e is CancellationException) {
+                throw e
             }
+            emit(Resource.Error(e.localizedMessage ?: "unexpected error"))
         }
+
     }
 }

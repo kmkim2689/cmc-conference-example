@@ -3,7 +3,7 @@ package com.practice.conference_example.data
 import com.practice.conference_example.domain.repository.ArrivalInfoRepository
 import kotlin.random.Random
 
-class ArrivalInfoRepositoryImpl : ArrivalInfoRepository {
+class MockArrivalInfoRepository : ArrivalInfoRepository {
 
     private val arrivalInfoItems = listOf<ArrivalInfo>(
         ArrivalInfo(Bus.AIRPORT, 5, 3),
