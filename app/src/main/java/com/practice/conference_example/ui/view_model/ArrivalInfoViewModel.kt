@@ -2,6 +2,7 @@ package com.practice.conference_example.ui.view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.practice.conference_example.core.Event
 import com.practice.conference_example.core.Resource
 import com.practice.conference_example.core.UiState
 import com.practice.conference_example.domain.use_case.GetArrivalInfoUseCase
@@ -30,9 +31,9 @@ class ArrivalInfoViewModel(
 
     val message = getMessageUseCase.execute().map { messageContent ->
         when (messageContent) {
-            is Resource.Loading -> UiState.Loading()
-            is Resource.Success -> UiState.Success(data = messageContent.data)
-            is Resource.Error -> UiState.Error(errorMessage = messageContent.message!!)
+            is Resource.Success -> Event.Success(data = messageContent.data)
+            is Resource.Error -> Event.Error(errorMessage = messageContent.message!!)
+            else -> Event.Error(errorMessage = "unexpected error")
         }
     }.shareIn(
         scope = viewModelScope,

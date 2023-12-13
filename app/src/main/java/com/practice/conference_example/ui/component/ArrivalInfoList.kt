@@ -1,5 +1,6 @@
 package com.practice.conference_example.ui.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,9 +14,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.practice.conference_example.data.ArrivalInfo
+import kotlinx.coroutines.Job
 
 @Composable
-fun ArrivalInfoList(arrivalInfoItems: List<ArrivalInfo>) {
+fun ArrivalInfoList(
+    arrivalInfoItems: List<ArrivalInfo>
+) {
     LazyColumn(
         modifier = Modifier.fillMaxSize()
     ) {
